@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="codenote-common" />
+        <module name="codenote-dao" />
+        <module name="codenote-domain" />
+        <module name="codenote-rpc" />
+        <module name="codenote-service" />
+        <module name="codenote-web" />
+        <module name="mcc-domain" />
+        <module name="mcc-rpc" />
+        <module name="mcc-service" />
+        <module name="mcc-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="codenote" target="1.6" />
+      <module name="codenote-common" target="1.6" />
+      <module name="codenote-dao" target="1.6" />
+      <module name="codenote-domain" target="1.6" />
+      <module name="codenote-rpc" target="1.6" />
+      <module name="codenote-service" target="1.6" />
+      <module name="codenote-web" target="1.6" />
+      <module name="mcc-domain" target="1.6" />
+      <module name="mcc-rpc" target="1.6" />
+      <module name="mcc-service" target="1.6" />
+      <module name="mcc-web" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
+

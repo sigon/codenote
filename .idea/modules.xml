@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/codenote.iml" filepath="$PROJECT_DIR$/codenote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codenote-common/codenote-common.iml" filepath="$PROJECT_DIR$/codenote-common/codenote-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codenote-dao/codenote-dao.iml" filepath="$PROJECT_DIR$/codenote-dao/codenote-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codenote-domain/codenote-domain.iml" filepath="$PROJECT_DIR$/codenote-domain/codenote-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codenote-rpc/codenote-rpc.iml" filepath="$PROJECT_DIR$/codenote-rpc/codenote-rpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codenote-service/codenote-service.iml" filepath="$PROJECT_DIR$/codenote-service/codenote-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codenote-web/codenote-web.iml" filepath="$PROJECT_DIR$/codenote-web/codenote-web.iml" />
+    </modules>
+  </component>
+</project>
+

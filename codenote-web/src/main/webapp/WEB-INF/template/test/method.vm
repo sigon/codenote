@@ -1,0 +1,4 @@
+$str $id $testValue $phone $password
+#foreach($enum in $list)
+    $enum </br>
+#end
