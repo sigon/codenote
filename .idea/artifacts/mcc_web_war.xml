@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="mcc-web:war">
-    <output-path>$PROJECT_DIR$/codenote-web/target</output-path>
-    <root id="archive" name="codenote-web.war.war">
-      <element id="artifact" artifact-name="mcc-web:war exploded" />
-    </root>
-  </artifact>
-</component>
