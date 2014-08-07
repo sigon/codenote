@@ -71,13 +71,19 @@ public class ClientController extends BaseController {
     }
     @ResponseBody
     @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String test(String param, HttpServletResponse response){
-        response.setCharacterEncoding("UTF-8");
+    public String test(String param, HttpServletRequest request, HttpServletResponse response){
         try {
-            return fileTextExecute.doTrans(param, new HashMap<String, String>());
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("FromUserName", "test");
+            map.put("CreateTime", System.currentTimeMillis() + "");
+            map.put("MsgType", "text");
+            map.put("Content", param);
+            return coreService.processRequest(map);
         } catch (Exception e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
+            return e.getMessage();
         }
-        return null;
     }
 }
