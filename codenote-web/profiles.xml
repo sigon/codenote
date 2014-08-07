@@ -17,6 +17,9 @@
         </profile>
         <profile>
             <id>production</id>
+			<activation>
+               <activeByDefault>true</activeByDefault>
+			</activation>
             <properties>
                 <codenote.jdbc.driver>com.mysql.jdbc.Driver</codenote.jdbc.driver>
                 <codenote.jdbc.url>jdbc:mysql://10.0.16.16:4066/sgump_mysql_q1wfncrg</codenote.jdbc.url>
