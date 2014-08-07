@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tree>
+    <node type="MsgType">
+        <node key="text" type="Content">
+            <node key="1" exec="fileTextExecute" param="1.txt"/>
+            <node key="2" exec="fileTextExecute" param="2.txt"/>
+            <node key="3" exec="fileTextExecute" param="3.txt"/>
+            <node key="4" exec="fileTextExecute" param="4.txt"/>
+            <node key="5" exec="fileTextExecute" param="5.txt"/>
+            <node key="6" exec="fileTextExecute" param="6.txt"/>
+            <node key="7" exec="fileTextExecute" param="7.txt"/>
+            <node key="8" exec="fileTextExecute" param="8.txt"/>
+            <node key="9" exec="fileTextExecute" param="9.txt"/>
+            <node key="10" exec="fileTextExecute" param="10.txt"/>
+            <node key="11" exec="fileTextExecute" param="11.txt"/>
+            <node key="12" exec="fileTextExecute" param="12.txt"/>
+            <node key="13" exec="fileTextExecute" param="13.txt"/>
+            <node key="14" exec="fileTextExecute" param="14.txt"/>
+            <node key="15" exec="fileTextExecute" param="15.txt"/>
+            <node key="16" exec="fileTextExecute" param="16.txt"/>
+            <node key="17" exec="fileTextExecute" param="17.txt"/>
+            <node key="18" exec="fileTextExecute" param="18.txt"/>
+            <node key="19" exec="fileTextExecute" param="19.txt"/>
+            <node key="20" exec="fileTextExecute" param="20.txt"/>
+            <node key="21" exec="fileTextExecute" param="21.txt"/>
+            <node key="22" exec="fileTextExecute" param="22.txt"/>
+
+        </node>
+        <node key="image" exec="defaultImageExecute"/>
+        <node key="link" exec="defaultLinkExecute"/>
+        <node key="location" exec="defaultLocationExecute"/>
+        <node key="video" exec="defaultVideoExecute"/>
+        <node key="voice" exec="defaultVoiceExecute"/>
+    </node>
+</tree>

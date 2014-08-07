@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
+
+    <bean id="executeMap" class="java.util.HashMap">
+        <constructor-arg>
+            <map>
+                <entry key="defaultExecute"  value-ref="defaultExecute"/>
+                <entry key="defaultImageExecute"  value-ref="defaultImageExecute"/>
+                <entry key="defaultTextExecute"  value-ref="defaultTextExecute"/>
+                <entry key="defaultLinkExecute" value-ref="defaultLinkExecute"/>
+                <entry key="defaultLocationExecute" value-ref="defaultLocationExecute"/>
+                <entry key="defaultVoiceExecute" value-ref="defaultVoiceExecute"/>
+                <entry key="defaultVideoExecute" value-ref="defaultVideoExecute"/>
+                <entry key="fileTextExecute" value-ref="fileTextExecute"/>
+            </map>
+        </constructor-arg>
+    </bean>
+</beans>
