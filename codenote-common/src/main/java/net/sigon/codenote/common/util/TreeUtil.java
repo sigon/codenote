@@ -1,6 +1,9 @@
 package net.sigon.codenote.common.util;
 
+import net.sigon.codenote.domain.constant.WeixinConstant;
 import net.sigon.codenote.domain.tree.Tree;
+import net.sigon.codenote.domain.tree.UserMember;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -11,6 +14,7 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,9 +28,9 @@ public class TreeUtil {
     private static final String TREE_XML_PATH = "tree.xml";
     private static Map<String, Tree> map;
     static {
-        map = parseTreeXml();
+        init();
     }
-    private static Map<String, Tree> parseTreeXml(){
+    private static void init(){
         try {
             File treeXmlFile = new ClassPathResource(TREE_XML_PATH).getFile();
 
@@ -36,16 +40,13 @@ public class TreeUtil {
             // 得到xml根元素
             Element root = document.getRootElement();
             // 得到根元素的所有子节点
-            Element ele = (Element)root.elements().get(0);
-            Map<String, Tree> map = new HashMap<String, Tree>();
+            Element ele = root.element("main");
+            map = new HashMap<String, Tree>();
             map.put("main", parseElement(ele));
-            return map;
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (DocumentException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            map.put("default", parseElement(root.element("default")));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return map;
     }
 
     private static Tree parseElement(Element ele) {
@@ -54,33 +55,71 @@ public class TreeUtil {
         tree.setExec(ele.attributeValue("exec"));
         tree.setKey(ele.attributeValue("key"));
         tree.setParam(ele.attributeValue("param"));
-        if(StringUtils.isNotBlank(tree.getType())){
-            Map<String, Tree> map = new HashMap<String, Tree>();
-            for(Object o:ele.elements()){
-                Element e = (Element)o ;
-                map.put(e.attributeValue("key"), parseElement(e));
-            }
-            tree.setMap(map);
+
+        List list = ele.elements();
+
+        if(CollectionUtils.isEmpty(list)){
+            return tree;
         }
+        Map<String, Tree> map = new HashMap<String, Tree>();
+        for(Object o:list){
+            Element e = (Element)o ;
+            map.put(e.attributeValue("key"), parseElement(e));
+        }
+        tree.setMap(map);
         return tree;
     }
     public static Tree exec(Map<String, String> param){
-        String type = map.get("main").getType();
-        return findTree(type, param, map.get("main").getMap());
+        String type = param.get(WeixinConstant.MsgType);
+        String userName = param.get(WeixinConstant.FromUserName);
+        String content = null;
+        if(type.equals("text")){
+            content = param.get(WeixinConstant.Content);
+        }
+        //返回首页
+        if("0".equals(content)){
+            UserMemberUtil.deleteUserMember(userName);
+        }
+
+        UserMember userMember = UserMemberUtil.getMember(userName);
+        if(userMember == null){
+            userMember = UserMemberUtil.createUserMember(userName, map.get("main"));
+        }
+        //Map<String, Tree> treeMap = map.get("main").getMap();
+
+        Tree tree = findTree(content, param, userMember.getTree());
+        if(tree.getMap() != null){
+            userMember.setTree(tree);
+        }
+
+        return tree;
     }
 
-    private static Tree findTree(String type, Map<String, String> param, Map<String, Tree> treeMap) {
-        String key = param.get(type).trim();
+    private static Tree findTree(String key, Map<String, String> param, Tree head) {
+        Map<String, Tree> treeMap = head.getMap();
         Tree tree = treeMap.get(key);
-        if(tree == null){
-            tree = new Tree();
-            tree.setExec("defaultExecute");
-            return tree;
+        if(treeMap == null || tree == null){
+            if(head.getExec() != null){
+                return head;
+            }
+            return map.get("default").getMap().get(param.get(WeixinConstant.MsgType));
         }
-        if(StringUtils.isBlank(tree.getType())){
-            return tree;
-        }else{
-            return findTree(tree.getType(), param, tree.getMap());
-        }
+        return tree;
+//        if(treeMap == null){
+//            tree = head;
+//            if(tree.getExec() != null){
+//                return tree;
+//            }
+//            tree = map.get("default").getMap().get(param.get(WeixinConstant.MsgType));
+//            //tree.setExec("defaultExecute");
+//            return tree;
+//        }else{
+//            tree = treeMap.get(key);
+//        }
+//        if(StringUtils.isBlank(tree.getType())){
+//            return tree;
+//        }else{
+//            return findTree(tree.getType(), param, tree);
+//        }
     }
 }

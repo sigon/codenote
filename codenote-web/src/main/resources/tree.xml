@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tree>
-    <node type="MsgType">
-        <node key="text" type="Content">
+    <main>
+        <node key="1" exec="fileTextExecute" param="exchange.txt">
             <node key="1" exec="defaultTextExecute" param="今日美元对人民币汇率：6.1623"/>
             <node key="2" exec="defaultTextExecute" param="今日港币对人民币汇率：0.795"/>
             <node key="3" exec="defaultTextExecute" param="今日欧元对人民币汇率：8.2282"/>
@@ -9,10 +9,25 @@
             <node key="5" exec="defaultTextExecute" param="今日日元对人民币汇率：0.0604"/>
             <node key="6" exec="defaultTextExecute" param="今日韩元对人民币汇率：0.0059"/>
         </node>
+        <node key="2" exec="fileTextExecute" param="tea.txt">
+            <node key="1" exec="fileTextExecute" param="1.txt"/>
+            <node key="2" exec="fileTextExecute" param="2.txt"/>
+            <node key="3" exec="fileTextExecute" param="3.txt"/>
+            <node key="4" exec="fileTextExecute" param="4.txt"/>
+            <node key="5" exec="fileTextExecute" param="5.txt"/>
+            <node key="6" exec="fileTextExecute" param="6.txt"/>
+            <node key="7" exec="fileTextExecute" param="7.txt"/>
+            <node key="8" exec="fileTextExecute" param="8.txt"/>
+            <node key="9" exec="fileTextExecute" param="9.txt"/>
+            <node key="10" exec="fileTextExecute" param="10.txt"/>
+        </node>
+    </main>
+    <default>
+        <node key="text" exec="defaultExecute"/>
         <node key="image" exec="defaultImageExecute"/>
         <node key="link" exec="defaultLinkExecute"/>
         <node key="location" exec="defaultLocationExecute"/>
         <node key="video" exec="defaultVideoExecute"/>
         <node key="voice" exec="defaultVoiceExecute"/>
-    </node>
+    </default>
 </tree>

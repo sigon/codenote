@@ -2,6 +2,7 @@ package net.sigon.codenote.web.action;
 
 import net.sigon.codenote.common.util.MessageUtil;
 import net.sigon.codenote.common.util.WeixinValid;
+import net.sigon.codenote.domain.constant.WeixinConstant;
 import net.sigon.codenote.service.core.CoreService;
 import net.sigon.codenote.service.execute.impl.FileTextExecute;
 import net.sigon.codenote.web.action.base.BaseController;
@@ -76,10 +77,10 @@ public class ClientController extends BaseController {
             request.setCharacterEncoding("UTF-8");
             response.setCharacterEncoding("UTF-8");
             Map<String, String> map = new HashMap<String, String>();
-            map.put("FromUserName", "test");
-            map.put("CreateTime", System.currentTimeMillis() + "");
-            map.put("MsgType", "text");
-            map.put("Content", param);
+            map.put(WeixinConstant.FromUserName, "test");
+            map.put(WeixinConstant.CreateTime, System.currentTimeMillis() + "");
+            map.put(WeixinConstant.MsgType, "text");
+            map.put(WeixinConstant.Content, param);
             return coreService.processRequest(map);
         } catch (Exception e) {
             e.printStackTrace();
