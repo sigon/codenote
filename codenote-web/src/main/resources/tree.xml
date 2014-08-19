@@ -21,6 +21,7 @@
             <node key="9" exec="fileTextExecute" param="9.txt"/>
             <node key="10" exec="fileTextExecute" param="10.txt"/>
         </node>
+        <node key="3" exec="singleNewsExecute" param="123123"/>
     </main>
     <default>
         <node key="text" exec="defaultExecute"/>

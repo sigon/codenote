@@ -21,7 +21,7 @@ public abstract class BaseExecute {
         message.setFromUserName(map.get("ToUserName"));
         message.setToUserName(map.get("FromUserName"));
         execute(message, param, map);
-        return MessageUtil.messageToXml(message, getClassMap());
+        return MessageUtil.toJaxbXml(message, getClassMap());
     }
     public abstract void execute(BaseMessage message, String param, Map<String, String> map) throws Exception;
 

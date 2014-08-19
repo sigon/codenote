@@ -15,6 +15,7 @@
                 <entry key="defaultVoiceExecute" value-ref="defaultVoiceExecute"/>
                 <entry key="defaultVideoExecute" value-ref="defaultVideoExecute"/>
                 <entry key="fileTextExecute" value-ref="fileTextExecute"/>
+                <entry key="singleNewsExecute" value-ref="singleNewsExecute"/>
             </map>
         </constructor-arg>
     </bean>

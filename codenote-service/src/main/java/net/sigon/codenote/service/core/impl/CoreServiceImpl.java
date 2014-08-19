@@ -30,7 +30,9 @@ public class CoreServiceImpl implements CoreService {
         Tree tree = TreeUtil.exec(map);
         BaseExecute execute = executeMap.get(tree.getExec());
         try {
-            return execute.doTrans(tree.getParam(), map);
+            String result =  execute.doTrans(tree.getParam(), map);
+            System.out.println(result);
+            return result;
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
@@ -100,5 +102,9 @@ public class CoreServiceImpl implements CoreService {
 //        }
 
 //        return respMessage;
+    }
+    public static void main(String[] args){
+        float f = 0x1.fffep-12f;
+        System.out.println(f);
     }
 }

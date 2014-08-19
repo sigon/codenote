@@ -66,6 +66,7 @@ public class TreeUtil {
             Element e = (Element)o ;
             map.put(e.attributeValue("key"), parseElement(e));
         }
+
         tree.setMap(map);
         return tree;
     }

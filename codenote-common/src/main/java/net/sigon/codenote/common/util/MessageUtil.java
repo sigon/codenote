@@ -11,10 +11,10 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.InputStream;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.Writer;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -150,6 +150,22 @@ public class MessageUtil {
         }
         return xstream.toXML(message);
     }
+    public static String toJaxbXml(BaseMessage message, Map<String, Class> classMap){
+        JAXBContext ctx= null;
+        try {
+            ctx = JAXBContext.newInstance(message.getClass());
+            Marshaller mar=ctx.createMarshaller();
+            StringWriter writer = new StringWriter();
+            mar.marshal(message, writer);
+            return writer.toString();
+        } catch (JAXBException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
+        //JAXBContext可以创建Marshallers（将Java对象转换成XML）
+        return null;
+
+    }
     /**
      * 文本消息对象转换成xml
      *
@@ -183,6 +199,8 @@ public class MessageUtil {
         xstream.alias("item", new Article().getClass());
         return xstream.toXML(newsMessage);
     }
+
+
 
     /**
      * 扩展xstream，使其支持CDATA块
