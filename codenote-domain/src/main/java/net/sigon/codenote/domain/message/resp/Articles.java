@@ -1,5 +1,7 @@
 package net.sigon.codenote.domain.message.resp;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
@@ -10,10 +12,13 @@ import java.util.List;
  * Time: 上午12:31
  * To change this template use File | Settings | File Templates.
  */
+@XmlAccessorType(value = XmlAccessType.FIELD)
 public class Articles {
-    @XmlElement
     private List<Article> item;
 
+    public List<Article> getItem() {
+        return item;
+    }
 
     public void setItem(List<Article> item) {
         this.item = item;

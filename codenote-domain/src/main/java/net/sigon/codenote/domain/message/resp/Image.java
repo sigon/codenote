@@ -1,5 +1,8 @@
 package net.sigon.codenote.domain.message.resp;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Sguang
@@ -7,6 +10,7 @@ package net.sigon.codenote.domain.message.resp;
  * Time: 下午9:58
  * To change this template use File | Settings | File Templates.
  */
+@XmlAccessorType(value = XmlAccessType.FIELD)
 public class Image {
     private String MediaId;
 

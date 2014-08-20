@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+       default-lazy-init="true">
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="classpath:mapper.xml"></property>
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="${codenote.jdbc.driver}" />
+		<property name="jdbcUrl" value="${codenote.jdbc.url}?autoReconnect=true&amp;characterEncoding=UTF-8" />
+		<property name="user" value="${codenote.jdbc.username}" />
+		<property name="password" value="${codenote.jdbc.password}" />
+		<property name="initialPoolSize" value="${connection_pools.initial_pool_size}" />
+		<property name="minPoolSize" value="${connection_pools.min_pool_size}" />
+		<property name="maxPoolSize" value="${connection_pools.max_pool_size}" />
+		<property name="maxIdleTime" value="${connection_pools.max_idle_time}" />
+		<property name="acquireIncrement" value="${connection_pools.acquire_increment}" />
+		<property name="checkoutTimeout" value="${connection_pools.checkout_timeout}" />
+        <property name="idleConnectionTestPeriod" value="${connection_pools.idle_connection_test_period}" />
+        <property name="testConnectionOnCheckin" value="${connection_pools.test_connection_on_checkin}" />
+        <property name="testConnectionOnCheckout" value="${connection_pools.test_connection_on_checkout}" />
+        <property name="preferredTestQuery" value="${connection_pools.preferred_test_query}" />
+	</bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="net.sigon.codenote.dao.mapper"></property>
+    </bean>
+</beans>

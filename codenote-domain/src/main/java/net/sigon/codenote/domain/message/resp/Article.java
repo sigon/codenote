@@ -1,5 +1,7 @@
 package net.sigon.codenote.domain.message.resp;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 
 /**
@@ -9,18 +11,15 @@ import javax.xml.bind.annotation.XmlElement;
  *         To change this template use File | Settings | File Templates.
  * @copyright Copyright 2014-XXXX JD.COM All Right Reserved
  */
+@XmlAccessorType(value = XmlAccessType.FIELD)
 public class Article {
     // 图文消息名称
-    @XmlElement
     private String Title;
     // 图文消息描述
-    @XmlElement
     private String Description;
     // 图片链接，支持JPG、PNG格式，较好的效果为大图640*320，小图80*80，限制图片链接的域名需要与开发者填写的基本资料中的Url一致
-    @XmlElement
     private String PicUrl;
     // 点击图文消息跳转链接
-    @XmlElement
     private String Url;
 
     public String getTitle() {

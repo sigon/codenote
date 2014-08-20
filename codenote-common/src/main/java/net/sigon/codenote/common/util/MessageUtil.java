@@ -155,6 +155,7 @@ public class MessageUtil {
         try {
             ctx = JAXBContext.newInstance(message.getClass());
             Marshaller mar=ctx.createMarshaller();
+            mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             StringWriter writer = new StringWriter();
             mar.marshal(message, writer);
             return writer.toString();
